@@ -12,9 +12,7 @@ With the rise of digital transactions and online activities, scam activities hav
 - **Complex and outdated scam resolution systems**
 
 ## 🚀 Solution
-As we move into a digital era,the country is going through the transition having
-significant increase in scam activities, resulting in financial loss, identity theft,
-and emotional distress for both individuals and organizations.<br>
+
 To Tackle this ,I developed **Vanilla** which is an advanced scam detection application designed to tackle **AI-driven phishing attacks, fraudulent messages, scam websites, phone numbers, and emails**. It uses cutting-edge technology to provide a **simple, secure, and effective** way to protect users from digital scams.  
 
 ## 🛠️ Features  
