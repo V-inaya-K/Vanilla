@@ -162,7 +162,7 @@ class ScamWebsite extends StatefulWidget {
 class _ScamWebsiteState extends State<ScamWebsite> {
   final TextEditingController _urlController = TextEditingController();
   String _resultMessage = '';
-  final String _apiKey = 'AIzaSyBFSt6vdecVFFw1bOOKQB2tjWS60VuQVcg'; // Replace with your actual API key
+  final String _apiKey = '---'; // Replace with your actual API key
 
   Future<bool> _checkUrlWithGoogleSafeBrowsing(String url) async {
     final requestBody = {
