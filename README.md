@@ -33,6 +33,6 @@ The project is built using the following technologies:
 - **Firebase** (backend and real-time database)  
 - **Android Studio** (development environment)
 
-![Animated GIF]([https://giphy.com/gifs/animation-animated-tech-l3mZnuz4coJp8EBBm](https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExZnNmbWJ2NmV0dGJjdWhqeThzdXhzaHF4NWZ1dXp0djlmZ2puY29jMCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/l3mZnuz4coJp8EBBm/giphy.gif))
+![Animated GIF](https://media1.giphy.com/media/l3mZnuz4coJp8EBBm/giphy.gif)
 
 
