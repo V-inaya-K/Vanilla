@@ -31,5 +31,8 @@ The project is built using the following technologies:
 - **Flutter** (for cross-platform development)  
 - **Dart** (programming language)  
 - **Firebase** (backend and real-time database)  
-- **Android Studio** (development environment)  
+- **Android Studio** (development environment)
+
+![Animated GIF](https://giphy.com/gifs/animation-animated-tech-l3mZnuz4coJp8EBBm)
+
 
