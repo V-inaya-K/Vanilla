@@ -1,5 +1,7 @@
 # 🍦 Vanilla - Digital Security Redefined  
 
+![Animated GIF](https://i.gifer.com/J4o.gif)
+
 ## ❌ Problem
 As we move into a digital era,the country is going through the transition having
 significant increase in scam activities, resulting in financial loss, identity theft,
