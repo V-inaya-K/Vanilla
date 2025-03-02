@@ -7,15 +7,15 @@ As we move into a digital era,the country is going through the transition having
 significant increase in scam activities, resulting in financial loss, identity theft,
 and emotional distress for both individuals and organizations.<br>
 
-With the rise of digital transactions and online activities, scam activities have **significantly increased**, leading to:  
-- **Financial loss** and **identity theft**  
-- **AI-powered scams** that bypass traditional fraud detection  
-- **Lack of awareness** and support from authorities  
-- **Complex and outdated scam resolution systems**
+With the rise of digital transactions and online activities, scam activities have significantly increased, leading to:  
+- Financial loss and identity theft  
+- AI-powered scams that bypass traditional fraud detection  
+- Lack of awareness and support from authorities  
+- Complex and outdated scam resolution systems
 
 ## 🚀 Solution
 
-To Tackle this ,I developed **Vanilla** which is an advanced scam detection application designed to tackle **AI-driven phishing attacks, fraudulent messages, scam websites, phone numbers, and emails**. It uses cutting-edge technology to provide a **simple, secure, and effective** way to protect users from digital scams.  
+To Tackle this ,I developed **Vanilla** which is an advanced scam detection application designed to tackle AI-driven phishing attacks, fraudulent messages, scam websites, phone numbers, and emails. It uses cutting-edge technology to provide a simple, secure, and effective way to protect users from digital scams.  
 
 ## 🛠️ Features  
 ✅ **Scam Detection:** Identifies **fraudulent text messages, links, phone numbers, and emails**  
