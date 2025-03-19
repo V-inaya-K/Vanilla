@@ -1,0 +1,15 @@
+{
+  "@@locale": "en",
+  "app_title": "Vanilla",
+  "search_hint": "Search",
+  "scam_caller_id": "Scam Caller-ID Checker",
+  "scam_website": "Scam Website Checker",
+  "scam_message": "Scam Message Checker",
+  "scam_email": "Scam Email Checker",
+  "caller_id_description": "Allows you to check for fraud Caller-ID",
+  "website_description": "Allows you to check for fraud Website",
+  "message_description": "Allows you to check for fraud Messages",
+  "email_description": "Allows you to check for fraud Email",
+  "verify": "Verify",
+  "logout": "Logout"
+}
