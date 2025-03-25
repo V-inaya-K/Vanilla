@@ -1,0 +1,14 @@
+{
+    "app_name": "Vanilla",
+    "scam_caller_id": "Scam Caller-ID Checker",
+    "scam_website": "Scam Website Checker",
+    "scam_message": "Scam Message Checker",
+    "scam_email": "Scam Email Checker",
+    "check_caller_id": "Allows you to check for fraud Caller-ID",
+    "check_website": "Allows you to check for fraud Website",
+    "check_message": "Allows you to check for fraud Messages",
+    "check_email": "Allows you to check for fraud Email",
+    "search": "Search",
+    "logout": "Logout"
+  }
+  

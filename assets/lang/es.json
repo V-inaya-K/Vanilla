@@ -1,0 +1,14 @@
+{
+    "app_name": "Vainilla",
+    "scam_caller_id": "Verificador de ID de Llamadas Fraudulentas",
+    "scam_website": "Verificador de Sitios Web Fraudulentos",
+    "scam_message": "Verificador de Mensajes Fraudulentos",
+    "scam_email": "Verificador de Correos Electrónicos Fraudulentos",
+    "check_caller_id": "Te permite verificar llamadas fraudulentas",
+    "check_website": "Te permite verificar sitios web fraudulentos",
+    "check_message": "Te permite verificar mensajes fraudulentos",
+    "check_email": "Te permite verificar correos electrónicos fraudulentos",
+    "search": "Buscar",
+    "logout": "Cerrar sesión"
+  }
+  
