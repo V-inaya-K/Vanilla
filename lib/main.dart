@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:vanilla_app/Splash.dart';
 import 'package:vanilla_app/intro.dart';
 import 'package:vanilla_app/Authentication/signup.dart';
+import 'package:vanilla_app/PopupItems/Gemini_chatbot.dart';
 
 void main() {
   runApp(const MyApp());

@@ -36,13 +36,20 @@ class Login extends StatefulWidget {
 
 
 class _LoginState extends State<Login> {
+  final TextEditingController nameController = TextEditingController();
+  final TextEditingController emailController = TextEditingController();
+  final TextEditingController passwordController = TextEditingController();
 
   bool isSignup = true;
   void onSubmit() {
     Navigator.pushReplacement(
       context,
       MaterialPageRoute(
-        builder: (context) => SplashScreen(nextScreen: MyIntro()),
+        builder: (context) => SplashScreen(nextScreen: MyIntro(
+          // name: nameController.text,
+          // email: emailController.text,
+          // password: passwordController.text,
+        )),
       ),
     );
   }
@@ -115,6 +122,7 @@ class _LoginState extends State<Login> {
                       Column(
                         children: [
                           TextField(
+                            controller: nameController,
                             decoration: InputDecoration(
                               hintText: "Enter Name",
                               // hintText: placeHolder[0],
@@ -132,6 +140,7 @@ class _LoginState extends State<Login> {
                         ],
                       ),
                     TextField(
+                      controller: emailController,
                       decoration: InputDecoration(
                         hintText: "Enter Email",
                         // hintText: placeHolder[1],
@@ -147,6 +156,7 @@ class _LoginState extends State<Login> {
                     ),
                     SizedBox(height: 10),
                     TextField(
+                      controller: passwordController,
                       obscureText: true,
                       decoration: InputDecoration(
                         hintText: "Enter Password",
