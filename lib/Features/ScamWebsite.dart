@@ -145,8 +145,7 @@ class ScamWebsite extends StatefulWidget {
 class _ScamWebsiteState extends State<ScamWebsite> {
   final TextEditingController _websiteController = TextEditingController();
   String _result = '';
-  final String apiKey = 'AIzaSyCrHyVnsBH7zsQMfjRZeK36AXhETEVMQP4'; // Replace with your actual API key
-
+  final String apiKey = 'AIzaSyCrHyVnsBH7zsQMfjRZeK36AXhETEVMQP4';
   Future<void> _identifyFraudEmail() async {
     final String userInput = _websiteController.text;
     final String apiUrl = "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=$apiKey";
@@ -232,7 +231,7 @@ class _ScamWebsiteState extends State<ScamWebsite> {
             Text(
               _result,
               style: GoogleFonts.lato(fontSize: 25,
-                  color: Colors.white),
+                  color: _result.toLowerCase().contains("scam") ? Colors.red : Colors.white),
               textAlign: TextAlign.center,
             ),
           ],

@@ -4,6 +4,7 @@ import 'dart:convert';
 import 'package:google_generative_ai/google_generative_ai.dart';
 import 'package:vanilla_app/intro.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:translator/translator.dart';
 
 class ScamText extends StatefulWidget {
   const ScamText({super.key});
@@ -15,7 +16,7 @@ class ScamText extends StatefulWidget {
 class _ScamTextState extends State<ScamText> {
   final TextEditingController _messageController = TextEditingController();
   String _result = '';
-  final String apiKey = 'AIzaSyCrHyVnsBH7zsQMfjRZeK36AXhETEVMQP4'; // Replace with your actual API key
+  final String apiKey = 'AIzaSyCrHyVnsBH7zsQMfjRZeK36AXhETEVMQP4';
 
   Future<void> _identifyFraudEmail() async {
     final String userInput = _messageController.text;
@@ -101,8 +102,12 @@ class _ScamTextState extends State<ScamText> {
             SizedBox(height: 20),
             Text(
               _result,
-              style: GoogleFonts.lato(fontSize: 25,
-                  color: Colors.white),
+              style: GoogleFonts.lato(
+                fontSize: 25,
+                color: (_result.toLowerCase().contains("scam"))
+                    ? Colors.red
+                    : Colors.white,
+              ),
               textAlign: TextAlign.center,
             ),
           ],

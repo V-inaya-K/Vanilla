@@ -15,7 +15,7 @@ class ScamEmail extends StatefulWidget {
 class _ScamEmailState extends State<ScamEmail> {
   final TextEditingController _emailController = TextEditingController();
   String _result = '';
-  final String apiKey = 'AIzaSyCrHyVnsBH7zsQMfjRZeK36AXhETEVMQP4'; // Replace with your actual API key
+  final String apiKey = 'AIzaSyCrHyVnsBH7zsQMfjRZeK36AXhETEVMQP4';
 
   Future<void> _identifyFraudEmail() async {
     final String userInput = _emailController.text;
@@ -102,7 +102,7 @@ class _ScamEmailState extends State<ScamEmail> {
             Text(
               _result,
               style: GoogleFonts.lato(fontSize: 25,
-                  color: Colors.white),
+                  color: _result.toLowerCase().contains("scam") ? Colors.red : Colors.white),
               textAlign: TextAlign.center,
             ),
           ],
