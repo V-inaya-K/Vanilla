@@ -66,17 +66,6 @@ class _ScamEmailState extends State<ScamEmail> {
           style: GoogleFonts.lato(color: Colors.white),
         ),
         backgroundColor: Colors.black,
-        actions: [
-          IconButton(
-            onPressed: () {
-              Navigator.pushReplacement(
-                context,
-                MaterialPageRoute(builder: (context) => MyIntro()),
-              );
-            },
-            icon: Icon(Icons.logout, color: Colors.white),
-          ),
-        ],
         elevation: 0,
         iconTheme: IconThemeData(color: Colors.white),
       ),

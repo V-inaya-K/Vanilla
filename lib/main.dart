@@ -1,5 +1,4 @@
 // DEFAULT
-import 'package:vanilla_app/features.dart';
 import 'package:flutter/material.dart';
 import 'package:vanilla_app/Splash.dart';
 import 'package:vanilla_app/intro.dart';
