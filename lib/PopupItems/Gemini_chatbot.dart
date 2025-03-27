@@ -113,6 +113,10 @@ class _ChatScreenState extends State<ChatScreen> {
                 },
               ),
             ),
+            Text("Made With Gemini",
+            style: GoogleFonts.poppins(
+              fontSize: 15,color: Colors.white,
+            ),),
             Padding(
               padding: const EdgeInsets.all(10),
               child: Row(

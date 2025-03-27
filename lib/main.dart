@@ -1,4 +1,5 @@
 // DEFAULT
+import 'package:vanilla_app/features.dart';
 import 'package:flutter/material.dart';
 import 'package:vanilla_app/Splash.dart';
 import 'package:vanilla_app/intro.dart';
@@ -23,7 +24,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: SplashScreen1(),
+      home: MyIntro(),
     );
   }
 }

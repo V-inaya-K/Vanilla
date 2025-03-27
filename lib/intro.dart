@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:translator/translator.dart';
-import 'package:vanilla_app/features.dart';
+import 'package:vanilla_app/Features/ScamEmail.dart';
+import 'package:vanilla_app/Features/ScamText.dart';
+import 'package:vanilla_app/Features/ScamWebsite.dart';
+import 'package:vanilla_app/Features/ScamCaller.dart';
 import 'package:vanilla_app/Authentication/signup.dart';
 import 'package:vanilla_app/PopupItems/Gemini_chatbot.dart';
-import 'package:vanilla_app/PopupItems/Notifications.dart';
 import 'package:google_fonts/google_fonts.dart';
 class MyIntro extends StatefulWidget {
   @override
