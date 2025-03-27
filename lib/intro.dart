@@ -238,7 +238,7 @@ class ChatbotPopup extends StatelessWidget {
               // Icon(Icons.chat, color: Colors.blue), // Added icon
               SizedBox(width: 8),
               Text(
-                "Profile Content",
+                "AI Chatbot",
                 style:  GoogleFonts.poppins(fontSize: 18, color: Colors.white),
               ),
             ],
@@ -348,16 +348,7 @@ class ProfilePopup extends StatelessWidget {
       color: Colors.white,
       child: Column(
         children: [
-          Text("Profile Content"),
-          TextButton(
-            onPressed: () {
-              Navigator.pushReplacement(
-                context,
-                MaterialPageRoute(builder: (context) => GeminiChatApp()),
-              );
-            },
-            child: Text('CHatbot'),
-          )
+         
         ],
       ),
     );
