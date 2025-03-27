@@ -16,7 +16,7 @@ class ScamText extends StatefulWidget {
 class _ScamTextState extends State<ScamText> {
   final TextEditingController _messageController = TextEditingController();
   String _result = '';
-  final String apiKey = 'AIzaSyCrHyVnsBH7zsQMfjRZeK36AXhETEVMQP4';
+  final String apiKey = '{YOUR_API}';
 
   Future<void> _identifyFraudEmail() async {
     final String userInput = _messageController.text;
