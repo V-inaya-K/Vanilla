@@ -156,50 +156,65 @@ class _ScamCalleridState extends State<ScamCallerid> {
     );
   }
 }
-// ---------------------------------
+// -------------
 // import 'package:flutter/material.dart';
 // import 'package:http/http.dart' as http;
 // import 'dart:convert';
 // import 'package:google_fonts/google_fonts.dart';
+// import 'package:url_launcher/url_launcher.dart';
 //
-// class ScamCallerID extends StatefulWidget {
-//   const ScamCallerID({super.key});
+// class ScamCallerid extends StatefulWidget {
+//   const ScamCallerid({super.key});
 //
 //   @override
-//   State<ScamCallerID> createState() => _ScamCallerIDState();
+//   State<ScamCallerid> createState() => _ScamCalleridState();
 // }
 //
-// class _ScamCallerIDState extends State<ScamCallerID> {
-//   String selectedCountryCode = '+1'; // Default country code
-//   final TextEditingController phoneController = TextEditingController();
-//   String _result = "Unknown"; // Default result
+// class _ScamCalleridState extends State<ScamCallerid> {
+//   String selectedCountryCode = '+1';
+//   final TextEditingController calleridController = TextEditingController();
+//   List<String> countryCodes = ['+1', '+44', '+91', '+61', '+81', '+92'];
+//   String _result = "Waiting for bot response...";
+//   final String botUsername = "TruecallerBot";
 //
-//   final String apiKey = "YOUR_API_KEY"; // Replace with actual API key
+//   // Open Telegram and send phone number to bot
+//   void sendPhoneNumberToBot() async {
+//     String phoneNumber = "$selectedCountryCode${calleridController.text}";
+//     String telegramUrl = "https://t.me/$botUsername?start=$phoneNumber";
 //
-//   List<String> countryCodes = ['+1', '+44', '+91', '+61', '+81', '+92']; // Example country codes
-//
-//   Future<void> identifyFraud() async {
-//     String phoneNumber = "$selectedCountryCode${phoneController.text}";
-//
-//     final String scamApiUrl = "https://scamapi.com/check?phone=$phoneNumber&apikey=$apiKey";
+//     setState(() {
+//       _result = "Opening Telegram...";
+//     });
 //
 //     try {
-//       final response = await http.get(Uri.parse(scamApiUrl));
+//       await launch(telegramUrl);
+//       Future.delayed(Duration(seconds: 10), fetchBotResponse);
+//     } catch (e) {
+//       setState(() {
+//         _result = "Error opening Telegram.";
+//       });
+//     }
+//   }
 //
+//   // Fetch bot response from Python scraper
+//   Future<void> fetchBotResponse() async {
+//     final String scraperApiUrl = "http://127.0.0.1:5000/scrape?phone=${calleridController.text}";
+//
+//     try {
+//       final response = await http.get(Uri.parse(scraperApiUrl));
 //       if (response.statusCode == 200) {
-//         final data = jsonDecode(response.body);
-//
+//         final responseData = jsonDecode(response.body);
 //         setState(() {
-//           _result = data['is_scam'] ? "Scam" : "Safe";
+//           _result = responseData["response"] ?? "No response.";
 //         });
 //       } else {
 //         setState(() {
-//           _result = "Error: ${response.statusCode}";
+//           _result = "Error fetching bot response.";
 //         });
 //       }
 //     } catch (e) {
 //       setState(() {
-//         _result = "Error: Failed to check number.";
+//         _result = "Failed to get response.";
 //       });
 //     }
 //   }
@@ -209,7 +224,7 @@ class _ScamCalleridState extends State<ScamCallerid> {
 //     return Scaffold(
 //       appBar: AppBar(
 //         title: Text(
-//           'Scam CallerID',
+//           'Scam CallerID Checker',
 //           style: GoogleFonts.lato(color: Colors.white),
 //         ),
 //         backgroundColor: Colors.black,
@@ -219,14 +234,6 @@ class _ScamCalleridState extends State<ScamCallerid> {
 //       body: Container(
 //         alignment: Alignment.center,
 //         padding: EdgeInsets.all(32),
-//         decoration: BoxDecoration(
-//           image: DecorationImage(
-//             image: NetworkImage(
-//                 'https://imgs.search.brave.com/sfqVZvAxc_0V_vB1v-l7ljQaMeuWC5k1RRnVF_kbgc8/rs:fit:500:0:0:0/g:ce/aHR0cHM6Ly9pLnBp/bmltZy5jb20vb3Jp/Z2luYWxzLzJkL2Zl/LzZjLzJkZmU2Yzk2/ZThjODFhNjkwZGQ1/NDczNDE0MjY1ZDlk/LmpwZw'
-//             ),
-//             fit: BoxFit.cover,
-//           ),
-//         ),
 //         child: Column(
 //           mainAxisAlignment: MainAxisAlignment.center,
 //           children: [
@@ -239,16 +246,19 @@ class _ScamCalleridState extends State<ScamCallerid> {
 //                       selectedCountryCode = newValue!;
 //                     });
 //                   },
-//                   items: countryCodes.map<DropdownMenuItem<String>>((String code) {
+//                   items: countryCodes
+//                       .map<DropdownMenuItem<String>>((String code) {
 //                     return DropdownMenuItem<String>(
 //                       value: code,
-//                       child: Text(code, style: TextStyle(color: Colors.black, backgroundColor: Colors.white)),
+//                       child: Text(code, style: TextStyle(color: Colors.black)),
 //                     );
 //                   }).toList(),
 //                 ),
 //                 Expanded(
 //                   child: TextField(
-//                     controller: phoneController,
+//                     controller: calleridController,
+//                     maxLength: 10,
+//                     keyboardType: TextInputType.number,
 //                     decoration: InputDecoration(
 //                       filled: true,
 //                       fillColor: Colors.white,
@@ -262,18 +272,16 @@ class _ScamCalleridState extends State<ScamCallerid> {
 //             SizedBox(height: 20),
 //             ElevatedButton(
 //               style: ElevatedButton.styleFrom(backgroundColor: Colors.blue[900]),
-//               onPressed: identifyFraud,
-//               child: Text('Check', style: TextStyle(color: Colors.white)),
+//               onPressed: sendPhoneNumberToBot,
+//               child: Text('Check for Scam', style: TextStyle(color: Colors.white)),
 //             ),
 //             SizedBox(height: 20),
 //             Text(
 //               _result,
 //               style: GoogleFonts.lato(
 //                 fontSize: 18,
-//                 color: (_result == "Scam")
+//                 color: (_result.toLowerCase().contains("scam"))
 //                     ? Colors.red
-//                     : (_result == "Safe")
-//                     ? Colors.green
 //                     : Colors.white,
 //               ),
 //               textAlign: TextAlign.center,
