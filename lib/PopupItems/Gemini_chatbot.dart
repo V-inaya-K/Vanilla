@@ -29,7 +29,7 @@ class ChatScreen extends StatefulWidget {
 class _ChatScreenState extends State<ChatScreen> {
   final TextEditingController _controller = TextEditingController();
   final List<Map<String, String>> _messages = [];
-  final String apiKey = "AIzaSyAGXmFdDC2uBlnNtM4T60BiAYlr_wXpgfU"; // Replace with your Gemini API Key
+  final String apiKey = "{API KEY}"; // Replace with your Gemini API Key
   late GenerativeModel _model;
 
   @override
