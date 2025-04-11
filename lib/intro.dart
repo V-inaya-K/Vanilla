@@ -6,6 +6,7 @@ import 'package:vanilla_app/Features/ScamWebsite.dart';
 import 'package:vanilla_app/Features/ScamCaller.dart';
 import 'package:vanilla_app/Authentication/signup.dart';
 import 'package:vanilla_app/PopupItems/Gemini_chatbot.dart';
+import 'package:flutter_carousel_widget/flutter_carousel_widget.dart';
 import 'package:google_fonts/google_fonts.dart';
 class MyIntro extends StatefulWidget {
   @override
@@ -21,6 +22,11 @@ class _MyIntroState extends State<MyIntro> {
   final translator = GoogleTranslator();
   String _selectedLanguage = 'English';
   String buttonText = 'Verify';
+
+  bool _isSearching = false;
+  TextEditingController _searchController = TextEditingController();
+
+
 
   final List<String> languages = ['English', 'Tamil', 'Hindi'];
 
@@ -62,8 +68,92 @@ class _MyIntroState extends State<MyIntro> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.black,
+        elevation: 0,
+        title: Text(
+          "Vanilla",
+          style: TextStyle(fontSize: 25, color: Colors.white),
+        ),
+        actions: [
+          if (_isSearching)
+            Container(
+              width: 180,
+              margin: EdgeInsets.symmetric(vertical: 8),
+              padding: EdgeInsets.symmetric(horizontal: 8),
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(8),
+              ),
+              child: TextField(
+                controller: _searchController,
+                style: TextStyle(color: Colors.black),
+                decoration: InputDecoration(
+                  hintText: 'Search...',
+                  hintStyle: TextStyle(color: Colors.black),
+                  border: InputBorder.none,
+                  // icon: Icon(Icons.search, color: Colors.black),
+                ),
+                onChanged: (query) {
+                  // Optionally filter your list
+                },
+              ),
+            ),
+          IconButton(
+            icon: Icon(_isSearching ? Icons.close : Icons.search, color: Colors.white),
+            onPressed: () {
+              setState(() {
+                _isSearching = !_isSearching;
+                if (!_isSearching) _searchController.clear();
+              });
+            },
+          ),
+          IconButton(
+            onPressed: () => _showPopup(context, ChatbotPopup()),
+            icon: Icon(Icons.message, color: Colors.white),
+          ),
+          IconButton(
+            onPressed: () => _showPopup(context, NotificationsPopup()),
+            icon: Icon(Icons.notifications, color: Colors.white),
+          ),
+          IconButton(
+            onPressed: () => _showPopup(context, ProfilePopup()),
+            icon: Icon(Icons.account_circle_rounded, color: Colors.white),
+          ),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 8.0),
+            child: DropdownButton<String>(
+              value: _selectedLanguage,
+              dropdownColor: Colors.black,
+              underline: Container(), // Removes the underline
+              icon: Icon(Icons.language, color: Colors.white),
+              onChanged: (String? newValue) {
+                setState(() {
+                  _selectedLanguage = newValue!;
+                  _translateTexts();
+                });
+              },
+              items: languages.map<DropdownMenuItem<String>>((String value) {
+                return DropdownMenuItem<String>(
+                  value: value,
+                  child: Text(value, style: TextStyle(color: Colors.white)),
+                );
+              }).toList(),
+            ),
+          ),
+          IconButton(
+            onPressed: () {
+              Navigator.pushReplacement(
+                context,
+                MaterialPageRoute(builder: (context) => Login()),
+              );
+            },
+            icon: Icon(Icons.logout, color: Colors.white),
+          ),
+        ],
+      ),
       body: Container(
-        padding: EdgeInsets.all(32),
+        padding: EdgeInsets.all(10),
         alignment: Alignment.center,
         decoration: BoxDecoration(
           image: DecorationImage(
@@ -72,78 +162,79 @@ class _MyIntroState extends State<MyIntro> {
           ),
         ),
         child: Column(
-          children: [Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text(
-                    "Vanilla",
-                    style: TextStyle(fontSize: 25, color: Colors.white),
-                  ),
-                  Row(
-                    children: [
-                      IconButton(
-                        onPressed: () => _showPopup(context, ChatbotPopup()),
-                        color: Colors.white,
-                        icon: Icon(Icons.message),
-                      ),
-                      IconButton(
-                        onPressed: () => _showPopup(context, NotificationsPopup()),
-                        color: Colors.white,
-                        icon: Icon(Icons.notifications),
-                      ),
-                      IconButton(
-                        onPressed: () => _showPopup(context, ProfilePopup()),
-                        color: Colors.white,
-                        icon: Icon(Icons.account_circle_rounded),
-                      ),
-                      DropdownButton<String>(
-                        value: _selectedLanguage,
-                        dropdownColor: Colors.black,
-                        icon: Icon(Icons.language, color: Colors.white),
-                        onChanged: (String? newValue) {
-                          setState(() {
-                            _selectedLanguage = newValue!;
-                            _translateTexts();
-                          });
-                        },
-                        items: languages.map<DropdownMenuItem<String>>((String value) {
-                          return DropdownMenuItem<String>(
-                            value: value,
-                            child: Text(value, style: TextStyle(color: Colors.white)),
-                          );
-                        }).toList(),
-                      ),
-                      IconButton(
-                        onPressed: () {
-                          Navigator.pushReplacement(
-                            context,
-                            MaterialPageRoute(builder: (context) => Login()),
-                          );
-                        },
-                        icon: Icon(Icons.logout, color: Colors.white),
-                      ),
-                    ],
-                  ),
-                ],
-              ),
+          children: [
+            // Row(
+            //     mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            //     children: [
+            //       Text(
+            //         "Vanilla",
+            //         style: TextStyle(fontSize: 25, color: Colors.white),
+            //       ),
+            //       Row(
+            //         children: [
+            //           IconButton(
+            //             onPressed: () => _showPopup(context, ChatbotPopup()),
+            //             color: Colors.white,
+            //             icon: Icon(Icons.message),
+            //           ),
+            //           IconButton(
+            //             onPressed: () => _showPopup(context, NotificationsPopup()),
+            //             color: Colors.white,
+            //             icon: Icon(Icons.notifications),
+            //           ),
+            //           IconButton(
+            //             onPressed: () => _showPopup(context, ProfilePopup()),
+            //             color: Colors.white,
+            //             icon: Icon(Icons.account_circle_rounded),
+            //           ),
+            //           DropdownButton<String>(
+            //             value: _selectedLanguage,
+            //             dropdownColor: Colors.black,
+            //             icon: Icon(Icons.language, color: Colors.white),
+            //             onChanged: (String? newValue) {
+            //               setState(() {
+            //                 _selectedLanguage = newValue!;
+            //                 _translateTexts();
+            //               });
+            //             },
+            //             items: languages.map<DropdownMenuItem<String>>((String value) {
+            //               return DropdownMenuItem<String>(
+            //                 value: value,
+            //                 child: Text(value, style: TextStyle(color: Colors.white)),
+            //               );
+            //             }).toList(),
+            //           ),
+            //           IconButton(
+            //             onPressed: () {
+            //               Navigator.pushReplacement(
+            //                 context,
+            //                 MaterialPageRoute(builder: (context) => Login()),
+            //               );
+            //             },
+            //             icon: Icon(Icons.logout, color: Colors.white),
+            //           ),
+            //         ],
+            //       ),
+            //     ],
+            //   ),
 
-            SizedBox(height: 10),
-            TextField(
-              decoration: InputDecoration(
-                filled: true,
-                fillColor: Colors.white,
-                isDense: true,
-                contentPadding: EdgeInsets.symmetric(vertical: 10.0, horizontal: 15),
-                hintStyle: TextStyle(color: Colors.black),
-                hintText: "Search",
-                suffixIcon: Icon(Icons.search),
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(20.0),
-                  borderSide: BorderSide(),
-                ),
-              ),
-            ),
-            SizedBox(height: 20),
+            // SizedBox(height: 10),
+            // TextField(
+            //   decoration: InputDecoration(
+            //     filled: true,
+            //     fillColor: Colors.white,
+            //     isDense: true,
+            //     contentPadding: EdgeInsets.symmetric(vertical: 10.0, horizontal: 15),
+            //     hintStyle: TextStyle(color: Colors.black),
+            //     hintText: "Search",
+            //     suffixIcon: Icon(Icons.search),
+            //     border: OutlineInputBorder(
+            //       borderRadius: BorderRadius.circular(20.0),
+            //       borderSide: BorderSide(),
+            //     ),
+            //   ),
+            // ),
+            // SizedBox(height: 20),
             Expanded(
               child: ListView.builder(
                 itemCount: titles.length,
@@ -157,6 +248,58 @@ class _MyIntroState extends State<MyIntro> {
                 },
               ),
             ),
+            Container(
+              height: 100,
+              width: double.infinity,
+              margin: EdgeInsets.symmetric(vertical: 10),
+              child: FlutterCarousel(
+                options: FlutterCarouselOptions(
+                  autoPlay: true,
+                  enlargeCenterPage: true,
+                  viewportFraction: 0.9,
+                  showIndicator: true,
+                  floatingIndicator: true,
+                  slideIndicator: CircularSlideIndicator(),
+                ),
+                items: [
+
+                  'Ad 1: Unlock Your Future – Apply for Education Now!',
+                  'Ad 2: Hungry ? Order Your Favourites Now on Zomato!',
+                  'Ad 3: Apply for Internships & Jobs at Internshala Today!',
+
+                ].map((text) {
+                  return Builder(
+                    builder: (BuildContext context) {
+                      return Container(
+                        width: MediaQuery.of(context).size.width,
+                        margin: EdgeInsets.symmetric(horizontal: 8),
+                        padding: EdgeInsets.all(20),
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(10),
+                          boxShadow: [
+                            BoxShadow(
+                              color: Colors.black26,
+                              blurRadius: 4,
+                              offset: Offset(2, 2),
+                            ),
+                          ],
+                        ),
+                        child: Center(
+                          child: Text(
+                            text,
+                            textAlign: TextAlign.center,
+                            style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold, color: Colors.black),
+                          ),
+                        ),
+                      );
+                    },
+                  );
+                }).toList(),
+              ),
+            ),
+
+
           ],
         ),
       ),
